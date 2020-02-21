@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Helps Discord.js bots change their game status on a timed schedule",
   "main": "index.js",
+  "repository": "battlemanmk2/statusmanager",
   "keywords": [
     "battlemanmk2"
   ],

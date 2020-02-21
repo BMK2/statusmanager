@@ -1,0 +1,11 @@
+{
+  "name": "@battlemanmk2/statusmanager",
+  "version": "1.0.0",
+  "description": "Helps Discord.js bots change their game status on a timed schedule",
+  "main": "index.js",
+  "keywords": [
+    "battlemanmk2"
+  ],
+  "author": "BattlemanMK2",
+  "license": "ISC"
+}

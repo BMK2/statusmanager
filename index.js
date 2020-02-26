@@ -21,8 +21,8 @@ class StatusManager extends EventEmitter {
 
     downloadStatusFromDB() {
         this.statusList = [];
-        this.client.db.model.findById(process.env.DATABASE_ID, 'botStatus', function(statusManager, err, botDocument) {
-            for (const status of botDocument.botStatus) {
+        this.client.db.botModel.findById(process.env.DATABASE_ID, 'botStatusList', function(statusManager, err, botDocument) {
+            for (const status of botDocument.botStatusList) {
                 let game = {type: status.statusType, name: status.name};
                 statusManager.statusList.push(game);
             }

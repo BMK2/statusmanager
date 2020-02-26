@@ -1,11 +1,12 @@
 {
-  "name": "@battlemanmk2/statusmanager",
+  "name": "@botsmk2/statusmanager",
   "version": "1.2.0",
   "description": "Helps Discord.js bots change their game status on a timed schedule",
   "main": "index.js",
   "repository": "battlemanmk2/statusmanager",
   "keywords": [
-    "battlemanmk2"
+    "battlemanmk2",
+    "botsmk2"
   ],
   "author": "BattlemanMK2",
   "license": "ISC",

@@ -12,11 +12,7 @@ class StatusManager extends EventEmitter {
             this.downloadStatusFromDB();
         });
         this.on('databaseLoaded', () => {
-            if(this.statusList.length > 1) {
-                this.startSchedule();
-            } else if(this.statusList.length == 1) {
-                this.setStatus({game: this.statusList[0]});
-            }
+            this.startSchedule();
         });
         this.on('nextStatus', () => {
             this.nextStatus();
@@ -45,17 +41,19 @@ class StatusManager extends EventEmitter {
     }
 
     nextStatus() {
-        this.setStatus({game: this.statusList[this.gameIndex]});
+        this.setStatus({activity: this.statusList[this.gameIndex], status: 'online'});
         this.gameIndex++;
         if(this.gameIndex == this.statusList.length) this.gameIndex = 0;
     }
 
     loadingStatus() {
-        this.setStatus({game: {name: 'my data load', type: 'WATCHING'}});
+        this.setStatus({activity: {name: 'my data load', type: 'WATCHING'}});
     }
 
     setStatus(presenceData) {
-        this.client.user.setPresence(presenceData).then(console.log(`Status updated to ${presenceData.game.type} ${presenceData.game.name}`)).catch((error)=>console.error(error));
+        this.client.user.setPresence(presenceData).then((presence) => {
+            console.log(`Status updated to ${presence.activities[0].type} ${presence.activities[0].name}`)
+        }).catch((error)=>console.error(error));
     }
 };
 

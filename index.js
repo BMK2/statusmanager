@@ -12,7 +12,11 @@ class StatusManager extends EventEmitter {
             this.downloadStatusFromDB();
         });
         this.on('databaseLoaded', () => {
-            this.startSchedule();
+            if(this.statusList.length > 1) {
+                this.startSchedule();
+            } else if(this.statusList.length == 1) {
+                this.setStatus({game: this.statusList[0]});
+            }
         });
         this.on('nextStatus', () => {
             this.nextStatus();

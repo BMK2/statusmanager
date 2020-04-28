@@ -7,10 +7,8 @@ class StatusManager extends EventEmitter {
         this.statusList = [];
         this.gameIndex = 0;
         this.scheduler = require('node-schedule');
-        this.client.on('ready', () => {
-            this.loadingStatus();
-            this.downloadStatusFromDB();
-        });
+        this.loadingStatus();
+        this.downloadStatusFromDB();
         this.on('databaseLoaded', () => {
             this.startSchedule();
         });
@@ -20,6 +18,7 @@ class StatusManager extends EventEmitter {
     }
 
     downloadStatusFromDB() {
+        console.log('Downloading status list from DB');
         this.statusList = [];
         this.client.db.botModel.findById(process.env.DATABASE_ID, 'botStatusList', function(statusManager, err, botDocument) {
             for (const status of botDocument.botStatusList) {
